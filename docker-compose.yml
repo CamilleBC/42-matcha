@@ -2,6 +2,9 @@ version: "3"
 services:
   client:
     build: ./client/
+    ports:
+      - "8000:3000"
+      - "9228:9229"
   server:
     build: ./server/
     environment:
