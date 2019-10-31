@@ -4,20 +4,28 @@
   "description": "Server for the 42 school Matcha project",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon --exec babel-node --inspect=0.0.0.0 app.js",
+    "start": "nodemon --exec babel-node --inspect=0.0.0.0 app/app.js",
     "test": "xo && jest"
   },
   "author": "cbaillat/tgunzbur",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "db-migrate": "^0.11.6",
+    "db-migrate-pg": "^1.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "pg": "^7.12.1"
+    "pg": "^7.12.1",
+    "pg-native": "^3.0.0",
+    "pusher": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/node": "^7.6.3",
     "@babel/preset-env": "^7.6.3",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
     "eslint": "^6.5.1",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "6.4.0",
@@ -26,9 +34,8 @@
     "eslint-plugin-prettier": "3.1.1",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "husky": "^3.0.9",
     "jest": "^24.9.0",
-    "lint-staged": "^9.4.2",
+    "nock": "^11.6.0",
     "nodemon": "^1.19.4",
     "prettier": "1.18.2"
   },
@@ -37,20 +44,5 @@
     "coveragePathIgnorePatterns": [
       "/node_modules/"
     ]
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.{json,md,scss,yaml,yml}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }

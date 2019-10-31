@@ -1,5 +1,0 @@
-CREATE TABLE "user" (
-    id BIGSERIAl NOT NULL PRIMARY KEY,
-    username VARCHAR(20) NOT NULL,
-    email VARCHAR(100) NOT NULL
-);
