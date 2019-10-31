@@ -43,20 +43,22 @@ export function CreateUSer() {
   };
 
   const submitUser = event => {
-    alert('An user was submitted: ' + username);
+    console.log('An user was submitted: ' + username);
     clearForm();
-    const response = postUser({
+    postUser({
       username,
       password,
       firstname,
       lastname,
       email
     });
-    if (response.ok) {
-      alert('User created');
-    } else {
-      alert('Could not create user');
-    }
+    // response.then(ok => {
+    //   if (ok) {
+    //     console.log('User created');
+    //   } else {
+    //     console.log('Could not create user');
+    //   }
+    // });
     event.preventDefault();
   };
 

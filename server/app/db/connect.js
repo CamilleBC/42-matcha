@@ -1,6 +1,5 @@
-import "dotenv/config";
-import { Client } from "pg";
-import Pusher from "pusher";
+import 'dotenv/config';
+import { Client } from 'pg';
 
 export async function connect() {
   // Create an instance of db
@@ -12,21 +11,15 @@ export async function connect() {
     password: process.env.DB_PASSWORD
   });
 
-  // Create an instance of Pusher
-  const pusher = new Pusher({
-    appId: process.env.PUSHER_APP_ID,
-    key: process.env.PUSHER_APP_KEY,
-    secret: process.env.PUSHER_APP_SECRET,
-    cluster: process.env.PUSHER_APP_CLUSTER,
-    encrypted: true
-  });
-
   try {
     await matchaDb.connect();
-    console.log("matcha-db: connected");
+    console.log('matcha-db: connected');
+    console.log('matcha-db: ' + matchaDb);
   } catch (err) {
-    console.error("matcha-db: connection error", err.stack);
+    console.error('matcha-db: connection error', err.stack);
   }
+
+  return matchaDb;
 }
 
 export default connect;
