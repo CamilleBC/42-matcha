@@ -1,6 +1,6 @@
 import { createUser as createUserCase } from '../domain/use_cases/createUser';
 
-export async function createUser(req, res, next) {
+export async function createUser(req, res) {
   console.log(req.body);
   var userData = req.body;
   try {

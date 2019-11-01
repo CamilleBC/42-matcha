@@ -7,7 +7,6 @@ const sqlQuery =
 export async function saveUser(user) {
   try {
     const db = await matchaDb;
-    console.log('db saveUser: ' + db);
     const res = await db.query(sqlQuery, [
       user.username,
       user.password,

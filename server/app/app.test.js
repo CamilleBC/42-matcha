@@ -1,5 +1,7 @@
-describe("Create user", () => {
-  it("should create a user in db", () => {
-    expect(true).toBe(true);
+var expect = require('chai').expect;
+
+describe('True assertion', () => {
+  it('should be true', () => {
+    expect(true).to.equal(true);
   });
 });
