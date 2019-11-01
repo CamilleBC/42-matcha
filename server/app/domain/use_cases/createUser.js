@@ -1,17 +1,5 @@
 import { saveUser } from '../../db/user';
-
-const isEmptyOrNull = str => {
-  if (!str || str.trim().length === 0) {
-    return true;
-  }
-  return false;
-};
-const validateUser = user => {
-  if (isEmptyOrNull(user.username)) {
-    return false;
-  }
-  return true;
-};
+import { validateUser } from '../../validation/validateUser';
 
 export async function createUser(user) {
   if (!validateUser(user)) {
