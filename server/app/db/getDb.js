@@ -2,6 +2,7 @@ import 'dotenv/config';
 import pgp from 'pg-promise';
 
 const initOptions = {
+  capSQL: true, // capitalize all generated SQL
   error(error, e) {
     if (e.cn) {
       // A connection-related error;
@@ -14,7 +15,8 @@ const initOptions = {
   }
 };
 
-const pgpInit = pgp(initOptions);
+export const pgpInit = pgp(initOptions);
+
 const matchaDb = {
   host: process.env.DB_URL,
   port: process.env.DB_PORT,
@@ -22,5 +24,7 @@ const matchaDb = {
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD
 };
+
 export const db = pgpInit(matchaDb);
+
 export default db;
