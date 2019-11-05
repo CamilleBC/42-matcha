@@ -3,21 +3,18 @@ import pgp from 'pg-promise';
 import { pgpInit } from './getDb';
 
 function createFakeUserArray(quantity = 1) {
-  let userArray = [];
-  for (let index = 0; index < quantity; index++) {
-    userArray.push({
-      username: faker.internet.userName().slice(0, 50),
-      password: faker.internet.password().slice(0, 100),
-      firstname: faker.name.firstName().slice(0, 200),
-      lastname: faker.name.lastName().slice(0, 200),
-      email: faker.internet.email().slice(0, 200)
-    });
-  }
-  return userArray;
+  return Array.from({ length: quantity }, () => ({
+    username: faker.internet.userName().slice(0, 50),
+    password: faker.internet.password().slice(0, 100),
+    firstname: faker.name.firstName().slice(0, 200),
+    lastname: faker.name.lastName().slice(0, 200),
+    email: faker.internet.email().slice(0, 200)
+  }));
 }
+
 export function populateDb(db) {
   console.time('createFakeUserArray');
-  const userArray = createFakeUserArray(1000);
+  const userArray = createFakeUserArray(10000);
   console.timeEnd('createFakeUserArray');
   // our set of columns, to be created only once (statically), and then reused,
   // to let it cache up its formatting templates for high performance:

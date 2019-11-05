@@ -7,12 +7,8 @@ export async function createUser(user) {
     console.log('Invalid user. Cannot save to db.');
     return;
   }
-  console.log('createUser getDb');
-  // const db = getDb();
   const matchaDb = db;
-  console.log('createUser saveUser');
-  await saveUser(matchaDb, user);
-  console.log('User saved');
+  return await saveUser(matchaDb, user);
 }
 
 export default createUser;
