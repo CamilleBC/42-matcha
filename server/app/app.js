@@ -13,7 +13,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-clearDb(db);
-populateDb(db);
+await clearDb(db);
+await populateDb(db);
 assignRoutes(app);
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

@@ -1,6 +1,6 @@
 import { createUser as createUserCase } from '../domain/use_cases/createUser';
 
-export async function createUser(req, res, next) {
+export async function createUserRoute(req, res, next) {
   var userData = req.body;
   console.log('Request body: ' + req.body);
   try {
@@ -11,4 +11,4 @@ export async function createUser(req, res, next) {
   }
 }
 
-export default { createUser };
+export default { createUserRoute };

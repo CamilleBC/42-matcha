@@ -12,10 +12,10 @@ function createFakeUserArray(quantity = 1) {
   }));
 }
 
-export function populateDb(db) {
-  console.time('createFakeUserArray');
+export async function populateDb(db) {
+  // console.time('createFakeUserArray');
   const userArray = createFakeUserArray(10000);
-  console.timeEnd('createFakeUserArray');
+  // console.timeEnd('createFakeUserArray');
   // our set of columns, to be created only once (statically), and then reused,
   // to let it cache up its formatting templates for high performance:
   const columnSet = new pgpInit.helpers.ColumnSet(
@@ -23,18 +23,18 @@ export function populateDb(db) {
     { table: 'user_table' }
   );
 
-  console.time('populateDb');
+  // console.time('populateDb');
   // executing a task:
-  db.task('populating-db', async t => {
+  await db.task('populating-db', async t => {
     // data input values:
     // generating a multi-row insert query:
     const insert = pgpInit.helpers.insert(userArray, columnSet);
     //=> INSERT INTO "matcha-db"("username","password", ...) VALUES('username1','password1', ...),('username2','password2', ...)
     return t.none(insert);
   })
-    .then(() => {
-      console.timeEnd('populateDb');
-    })
+    // .then(() => {
+      // console.timeEnd('populateDb');
+    // })
     .catch(error => {
       console.log('Could not populate database');
       console.log(error.message);
