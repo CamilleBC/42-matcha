@@ -7,7 +7,7 @@ export function assignRoutes(app) {
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization']
   };
-  app.get('/', (req, res) => res.send('42-matcha'));
+  app.get('/', (req, res) => res.send('42-matcha-backend'));
 
   app.options('/users', cors(corsOptions));
   app.post('/users', cors(corsOptions), (req, res, next) => createUserRoute(req, res, next));
